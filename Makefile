@@ -17,14 +17,14 @@ test-week-object: week-data.cpp $(CATCH) test/test-week-object.cpp
 	$(CXX) $(CXXFLAGS) -o test/$@ $^
 	test/$@ --success
 
-test-stats: stats.cpp $(CATCH) test/test-stats.cpp
+test-stats: stats.cpp week-data.cpp $(CATCH) test/test-stats.cpp
 	$(CXX) $(CXXFLAGS) -o test/$@ $^
 	test/$@ --success
 
-test-state-object: state.cpp $(CATCH) test/test-state-object.cpp
+test-state-object: state.cpp week-data.cpp $(CATCH) test/test-state-object.cpp
 	$(CXX) $(CXXFLAGS) -o test/$@ $^
 	test/$@ --success
 
-test-morbidity: morbidity.cpp $(CATCH) test/test-morbidity.cpp
+test-morbidity: morbidity.cpp state.cpp week-data.cpp $(CATCH) test/test-morbidity.cpp
 	$(CXX) $(CXXFLAGS) -o test/$@ $^
 	test/$@ --success
