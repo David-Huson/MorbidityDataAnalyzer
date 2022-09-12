@@ -3,8 +3,9 @@ CXXFLAGS = -g -std=c++11 -Wall
 
 CATCH = test/catch/catch.o
 
-main: TO_DO_DEPENDENCIES
-	TO_DO_COMMAND
+main: main.cpp morbidity.cpp state.cpp stats.cpp week-data.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $^
+	./main
 
 clean:
 	rm -rf *.dSYM
@@ -12,18 +13,18 @@ clean:
 
 test-all: test-stats test-week-object test-state-object test-morbidity
 
-test-week-object: TO_DO_DEPENDENCIES $(CATCH) test/test-week-object.cpp
+test-week-object: week-data.cpp $(CATCH) test/test-week-object.cpp
 	$(CXX) $(CXXFLAGS) -o test/$@ $^
 	test/$@ --success
 
-test-stats: TO_DO_DEPENDENCIES $(CATCH) test/test-stats.cpp
+test-stats: stats.cpp $(CATCH) test/test-stats.cpp
 	$(CXX) $(CXXFLAGS) -o test/$@ $^
 	test/$@ --success
 
-test-state-object: TO_DO_DEPENDENCIES $(CATCH) test/test-state-object.cpp
+test-state-object: state.cpp $(CATCH) test/test-state-object.cpp
 	$(CXX) $(CXXFLAGS) -o test/$@ $^
 	test/$@ --success
 
-test-morbidity: TO_DO_DEPENDENCIES $(CATCH) test/test-morbidity.cpp
+test-morbidity: morbidity.cpp $(CATCH) test/test-morbidity.cpp
 	$(CXX) $(CXXFLAGS) -o test/$@ $^
 	test/$@ --success
