@@ -1,5 +1,5 @@
 #ifndef WEEK_DATA_HPP
-#define WEEK_DATA_HPP;
+#define WEEK_DATA_HPP
 
 #include <ostream>
 

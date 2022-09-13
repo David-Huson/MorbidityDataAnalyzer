@@ -13,7 +13,7 @@ clean:
 
 test-all: test-stats test-week-object test-state-object test-morbidity
 
-test-week-object: week-data.cpp $(CATCH) test/test-week-object.cpp
+test-week-object: week-data.o $(CATCH) test/test-week-object.cpp
 	$(CXX) $(CXXFLAGS) -o test/$@ $^
 	test/$@ --success
 
@@ -28,3 +28,18 @@ test-state-object: state.cpp week-data.cpp $(CATCH) test/test-state-object.cpp
 test-morbidity: morbidity.cpp state.cpp week-data.cpp $(CATCH) test/test-morbidity.cpp
 	$(CXX) $(CXXFLAGS) -o test/$@ $^
 	test/$@ --success
+
+catch.o: test/catch/catch.cpp
+	$(CXX) $(CXXFLAGS) -c $<
+
+week-data.o: week-data.cpp
+	$(CXX) $(CXXFLAGS) -c $<
+
+stats.o: stats.cpp week-data.cpp
+	$(CXX) $(CXXFLAGS) -c $<
+
+state.o: state.cpp week-data.cpp
+	$(CXX) $(CXXFLAGS) -c $<
+
+morbidity.o: morbidity.cpp state.cpp week-data.cpp
+	$(CXX) $(CXXFLAGS) -c $<
