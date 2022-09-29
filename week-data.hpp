@@ -10,9 +10,9 @@ class WeekData{
 
   public:
     WeekData();
-    const std::string GetDate() const;
     WeekData(std::string date);
-    const int GetDeathCount() const;
+    std::string GetDate() const;
+    int GetDeathCount() const;
     friend std::ostream& operator << (std::ostream& out, const WeekData& week);
 };
 

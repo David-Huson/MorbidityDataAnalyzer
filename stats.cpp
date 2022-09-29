@@ -10,7 +10,7 @@
 
 double Stats::GetMean(WeekData dataset[], int numDataPoints) {
   // edge cases
-  if(!(numDataPoints > 0)){
+  if(numDataPoints <= 0){
     return 0.0;
   }
 
@@ -24,7 +24,7 @@ double Stats::GetMean(WeekData dataset[], int numDataPoints) {
 double Stats::StDev(WeekData dataset[], int populationSize) {
 
   // edge cases
-  if(!(populationSize > 0)){
+  if(populationSize <= 0){
     return 0.0;
   }
 

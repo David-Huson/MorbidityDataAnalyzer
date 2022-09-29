@@ -11,15 +11,14 @@ WeekData::WeekData(std::string data) {
   int delimiterIndex = data.find(',');
   date = data.substr(0, delimiterIndex);
   allCauses = std::stoi(data.substr(delimiterIndex + 1));
-  std::cout << allCauses << ' ' << date << std::endl;
+  // std::cout << allCauses << ' ' << date << std::endl;
   naturalCauses = 0;
-
 }
-const std::string WeekData::GetDate() const {
+std::string WeekData::GetDate() const {
   return date;
 }
-const int WeekData::GetDeathCount() const {
-  return allCauses;
+int WeekData::GetDeathCount() const {
+  return this->allCauses;
 }
 std::ostream& operator << (std::ostream& out, const WeekData& week) {
   out << week.date << " - total deaths: " << week.GetDeathCount();

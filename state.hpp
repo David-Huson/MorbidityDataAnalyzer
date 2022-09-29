@@ -2,6 +2,7 @@
 #define STATE_HPP
 
 #include "week-data.hpp"
+#include <vector>
 
 class State {
   std::string name;
@@ -14,12 +15,15 @@ class State {
     State(std::string name);
     State(const State& copyState);
     ~State();
-    const std::string GetName();
+    std::string GetName() const;
     void AddWeek(std::string);
-    const double GetMeanDeaths();
-    const std::string* GetOutliers();
-    const double Stdev(double mean);
+    double GetMeanDeaths() const;
+    int GetOutlierCount() const ;
+    std::string* GetOutliers() const ; 
+    double Stdev() const;
     State operator = (const State& rhs);
+    int getNumberOfWeeks();
+    bool checkIfOutlier(int deathCount) const;
 };
 
 #endif
