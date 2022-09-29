@@ -53,7 +53,7 @@ void start(Morbidity& data) {
 
 				printSpacer();
 				cout << "The mean deaths for Texas is " ;
-				cout << fixed << setprecision(2) << data.GetMean(state) << endl;
+				cout << fixed << setprecision(3) << data.GetMean(state) << endl;
 				printSpacer();
 				break;
 
