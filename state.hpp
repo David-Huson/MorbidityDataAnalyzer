@@ -21,7 +21,6 @@ class State {
     int GetOutlierCount() const ;
     std::string* GetOutliers() const ; 
     double Stdev() const;
-    State operator = (const State& rhs);
     int getNumberOfWeeks();
     bool checkIfOutlier(int deathCount) const;
 };

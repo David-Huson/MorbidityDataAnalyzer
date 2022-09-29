@@ -74,5 +74,3 @@ bool State::checkIfOutlier(int deathCount) const{
 
   return(dev > 2 * stDev);
 }
-
-State State::operator = (const State& rhs){}

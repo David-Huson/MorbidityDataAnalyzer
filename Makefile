@@ -3,7 +3,7 @@ CXXFLAGS = -g -std=c++11 -Wall
 
 CATCH = test/catch/catch.o
 
-main: main.cpp morbidity.cpp state.cpp stats.cpp week-data.cpp
+main: main.o morbidity.o state.o stats.o week-data.o
 	$(CXX) $(CXXFLAGS) -o $@ $^
 	./main < main-input-1.txt
 	./main < main-input-2.txt

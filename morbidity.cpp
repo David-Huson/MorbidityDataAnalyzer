@@ -81,7 +81,7 @@ double Morbidity::GetMean(std::string state) const {
 
 int Morbidity::GetOutlierCount(std::string state) const {
   int stateIndex = GetIndexForState(state);
-  if(stateIndex <= 0){
+  if(stateIndex >= 0){
     return (states[stateIndex]->GetOutlierCount());
     }
   else
@@ -99,7 +99,7 @@ std::string Morbidity::GetOutlierInfoForAllStates() const {
   std::string allOutliers = "";
 
   for(int i = 0; i < numberOfStates; ++i) {
-    allOutliers += states[i]->GetName() + ": " + std::to_string(states[i]->GetOutlierCount()) + '\n';
+    allOutliers += states[i]->GetName() + ": " + std::to_string(states[i]->GetOutlierCount()) + " outlying weeks\n";
   }
 
   // std::cout << allOutliers << std::endl;
