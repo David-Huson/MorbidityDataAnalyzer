@@ -1,3 +1,10 @@
+/**************************************
+ * @file main.cpp
+ * @author Dvid Huson(dph14@students.uwf.edu)
+ * @brief a class to test the functionality of the program using file input
+ * @date 2022-09-13
+**************************************/
+
 #include "morbidity.hpp"
 #include <iostream>
 #include <iomanip>
@@ -5,7 +12,10 @@
 using namespace std;
 
 void printMenu() {
-	cout << "\t1 - Output the mean for a state\n\t2 - Get a list of outliers for a state\n\t3 - List all states with statistically significant data points anything other than 1-3 will end the application.\n\tPlease choose an option from the above menu: ";
+	cout << "\t1 - Output the mean for a state" << endl;
+	cout << "\t2 - Get a list of outliers for a state" << endl;
+	cout << "\t3 - List all states with statistically significant data points anything other than 1-3 will end the application." << endl;
+	cout << "\tPlease choose an option from the above menu: " << endl;
 }
 
 void printSpacer() {
