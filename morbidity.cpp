@@ -11,7 +11,6 @@ Morbidity::Morbidity() {
   validInputFile = false;
   numberOfStates = 0;
   states = new State*[MAX_NUMBER_OF_STATES];
-  validInputFile = false;
 }
 
 Morbidity::~Morbidity(){
