@@ -30,18 +30,3 @@ test-state-object: state.cpp stats.cpp week-data.cpp $(CATCH) test/test-state-ob
 test-morbidity: morbidity.cpp state.cpp week-data.cpp stats.cpp $(CATCH) test/test-morbidity.cpp
 	$(CXX) $(CXXFLAGS) -o test/$@ $^
 	test/$@ --success
-
-catch.o: test/catch/catch.cpp
-	$(CXX) $(CXXFLAGS) -c $<
-
-week-data.o: week-data.cpp
-	$(CXX) $(CXXFLAGS) -c $<
-
-stats.o: stats.cpp week-data.cpp
-	$(CXX) $(CXXFLAGS) -c $<
-
-state.o: state.cpp stats.cpp week-data.cpp
-	$(CXX) $(CXXFLAGS) -c $<
-
-morbidity.o: morbidity.cpp state.cpp week-data.cpp stats.cpp
-	$(CXX) $(CXXFLAGS) -c $<
