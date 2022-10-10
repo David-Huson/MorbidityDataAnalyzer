@@ -44,34 +44,30 @@ void Morbidity::LoadData(){
 
       // keep reading the file while until we've reached the end of the file
       while(!input.eof()) {
-        inStates = false;
-        // get the next line in the file
-        getline(input, line, '\n');
-        // find the next comma or newline
-        int delimIndex = line.find_first_of(",\n");
+  
+        getline(input, line, '\n');                  // get the next line in the file
+        int delimIndex = line.find_first_of(",");  // find the next comma or newline
 
-        // separate the states name form the rest of the data
-        name = line.substr(0, delimIndex);
-        // separate the week and deaths data from the name
-        weekData = line.substr(delimIndex+1);
+        name = line.substr(0, delimIndex);          // separate the states name form the rest of the data
+        
+        weekData = line.substr(delimIndex+1);       // separate the week and deaths data from the name
 
         // if there are at least 1 states in the array, check if the current state is in the states array
         if(numberOfStates > 0){
-          for(int i = 0; i < numberOfStates; ++i) {
-            // check if the state is in the states array, if true -> add week data to array
-            if(states[i]->GetName() == name) {
-              states[i]->AddWeek(weekData);
-              inStates = true;
-              break;
-            }
+          int stateIndex = GetIndexForState(name);
+          // if the current state is not in the states array AND the name is not empty, 
+          if(stateIndex < 0 && !name.empty()) {
+            states[numberOfStates] = new State(name);     // add the state to the array
+            states[numberOfStates]->AddWeek(weekData);    // add the week data to the state object
+            numberOfStates++;
+          }
+          else if(!name.empty()){
+            states[stateIndex]->AddWeek(weekData);
           }
         }
-
-        // if the current state is not in the states array AND the name is not empty, 
-        // add the state to the array and add the week data to the state object
-        if(!inStates && !name.empty()) {
-          states[numberOfStates] = new State(name);
-          states[numberOfStates]->AddWeek(weekData);
+        else {
+          states[numberOfStates] = new State(name);     // add the state to the array
+          states[numberOfStates]->AddWeek(weekData);    // add the week data to the state object
           numberOfStates++;
         }
       }
